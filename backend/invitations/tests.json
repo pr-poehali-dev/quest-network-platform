@@ -1,0 +1,38 @@
+{
+  "tests": [
+    {
+      "name": "Check invalid code",
+      "method": "GET",
+      "path": "/?code=INVALID00",
+      "expectedStatus": 200,
+      "expectedBody": {"valid": false},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "OPTIONS / — CORS preflight, ожидаем 200",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "POST /create без тела — ожидаем 400",
+      "method": "POST",
+      "path": "/create",
+      "body": "{}",
+      "expectedStatus": 400
+    },
+    {
+      "name": "POST /create без channel — ожидаем 400",
+      "method": "POST",
+      "path": "/create",
+      "body": "{\"created_by\": 1}",
+      "expectedStatus": 400
+    },
+    {
+      "name": "GET / без параметров — ожидаем 400",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 400
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "tests": [
+    {
+      "name": "Health",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200,
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "OPTIONS / — CORS preflight, ожидаем 200",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "POST / без тела — ожидаем 400",
+      "method": "POST",
+      "path": "/",
+      "body": "{}",
+      "expectedStatus": 400
+    },
+    {
+      "name": "POST / без name — ожидаем 400",
+      "method": "POST",
+      "path": "/",
+      "body": "{\"owner_id\": 1}",
+      "expectedStatus": 400
+    },
+    {
+      "name": "PUT / без id — ожидаем 400",
+      "method": "PUT",
+      "path": "/",
+      "body": "{\"name\": \"test\"}",
+      "expectedStatus": 400
+    }
+  ]
+}

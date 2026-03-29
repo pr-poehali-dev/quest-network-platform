@@ -1,0 +1,39 @@
+{
+  "tests": [
+    {
+      "name": "GET / без user_id — ожидаем 400",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 400
+    },
+    {
+      "name": "OPTIONS / — CORS preflight, ожидаем 204",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 204
+    },
+    {
+      "name": "POST /login без тела — ожидаем 400",
+      "method": "POST",
+      "path": "/login",
+      "body": "{}",
+      "expectedStatus": 400
+    },
+    {
+      "name": "POST /register без тела — ожидаем 400",
+      "method": "POST",
+      "path": "/register",
+      "body": "{}",
+      "expectedStatus": 400
+    },
+    {
+      "name": "GET / с нечисловым user_id — ожидаем 400",
+      "method": "GET",
+      "path": "/",
+      "queryStringParameters": {
+        "user_id": "abc"
+      },
+      "expectedStatus": 400
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "tests": [
+    {
+      "name": "Health",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200,
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "OPTIONS / — CORS preflight, ожидаем 200",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "DELETE / — неподдерживаемый метод, ожидаем 404",
+      "method": "DELETE",
+      "path": "/",
+      "expectedStatus": 404
+    },
+    {
+      "name": "PUT / без id — ожидаем 400",
+      "method": "PUT",
+      "path": "/",
+      "body": "{\"name\": \"test\"}",
+      "expectedStatus": 400
+    },
+    {
+      "name": "PUT / с невалидным id — ожидаем 400",
+      "method": "PUT",
+      "path": "/",
+      "body": "{\"status\": \"active\"}",
+      "expectedStatus": 400
+    }
+  ]
+}
